@@ -11,32 +11,47 @@ export function PhoneMockup({ children, className }: PhoneMockupProps) {
   return (
     <div
       className={cn(
-        "relative w-[280px] h-[580px] bg-[#1a1a1a] rounded-[40px] p-3 shadow-2xl",
-        "border-[3px] border-[#2a2a2a]",
+        "relative w-[220px] h-[440px] bg-white rounded-[36px] p-2",
+        "shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15),0_2px_8px_-2px_rgba(0,0,0,0.08)]",
+        "border border-gray-100",
         className
       )}
     >
-      {/* Phone frame inner bezel */}
-      <div className="absolute inset-3 rounded-[32px] overflow-hidden bg-[#0a0a0a]">
+      {/* Phone frame inner */}
+      <div className="absolute inset-2 rounded-[28px] overflow-hidden bg-white">
         {/* Status bar */}
-        <div className="absolute top-0 left-0 right-0 h-10 px-6 flex items-center justify-between z-20">
-          <span className="text-white text-xs font-medium">9:41</span>
+        <div className="absolute top-0 left-0 right-0 h-8 px-4 flex items-center justify-between z-20 bg-white">
           <div className="flex items-center gap-1">
-            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z" opacity="0.3"/>
-              <path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/>
+            <span className="text-black text-[11px] font-semibold">9:41</span>
+            <svg className="w-3 h-3 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 17l10-9 10 9-2 2-8-7.25L4 19z" />
             </svg>
-            <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+          </div>
+          
+          {/* Dynamic Island */}
+          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
+          
+          <div className="flex items-center gap-0.5">
+            <svg className="w-3.5 h-3.5 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="4" y="6" width="3" height="12" rx="1" opacity="0.3"/>
+              <rect x="9" y="4" width="3" height="14" rx="1" opacity="0.5"/>
+              <rect x="14" y="2" width="3" height="16" rx="1" opacity="0.7"/>
+              <rect x="19" y="0" width="3" height="18" rx="1"/>
+            </svg>
+            <svg className="w-3.5 h-3.5 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14 2a8 8 0 018 8h-2a6 6 0 00-6-6V2zm0 4a4 4 0 014 4h-2a2 2 0 00-2-2V6z"/>
+              <circle cx="14" cy="10" r="2"/>
+            </svg>
+            <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="7" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
+              <rect x="20" y="10" width="2" height="4" rx="1"/>
+              <rect x="4" y="9" width="8" height="6" rx="1"/>
             </svg>
           </div>
         </div>
 
-        {/* Dynamic Island */}
-        <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-7 bg-black rounded-full z-30" />
-
         {/* Screen content */}
-        <div className="relative w-full h-full rounded-[32px] overflow-hidden">
+        <div className="relative w-full h-full rounded-[28px] overflow-hidden pt-8">
           {children}
         </div>
       </div>
@@ -46,27 +61,34 @@ export function PhoneMockup({ children, className }: PhoneMockupProps) {
 
 export function ChatScreen() {
   return (
-    <div className="w-full h-full bg-[#0f0f0f] flex flex-col">
+    <div className="w-full h-full bg-white flex flex-col">
       {/* Header */}
-      <div className="pt-12 px-4 pb-3 border-b border-[#222]">
-        <h2 className="text-white text-sm font-semibold">Chat GPT GO</h2>
+      <div className="px-4 py-2 flex items-center gap-2">
+        <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+        </svg>
+        <span className="text-black text-xs font-medium">Chat GPT GO</span>
       </div>
 
       {/* Chat content */}
-      <div className="flex-1 p-4 flex flex-col justify-center">
-        <p className="text-white text-xl font-bold leading-tight">
+      <div className="flex-1 px-4 flex flex-col justify-center">
+        <p className="text-black text-xl font-bold leading-tight">
           Hello Saad,
         </p>
-        <p className="text-white text-xl font-bold leading-tight mt-1">
-          How can I help you today?
+        <p className="text-black text-xl font-bold leading-tight">
+          How can I help
+        </p>
+        <p className="text-black text-xl font-bold leading-tight">
+          you today?
         </p>
       </div>
 
       {/* Input bar */}
-      <div className="p-4 pb-8">
-        <div className="bg-[#1a1a1a] rounded-full px-4 py-3 flex items-center gap-2">
-          <span className="text-[#666] text-lg">+</span>
-          <span className="text-[#666] text-sm">Ask anything...</span>
+      <div className="px-3 pb-6">
+        <div className="bg-gray-100 rounded-full px-4 py-2.5 flex items-center gap-2">
+          <span className="text-gray-400 text-sm">+</span>
+          <span className="text-gray-400 text-xs">Ask anything...</span>
         </div>
       </div>
     </div>
@@ -75,32 +97,38 @@ export function ChatScreen() {
 
 export function OrbScreen() {
   return (
-    <div className="w-full h-full bg-[#0a0a0a] flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="w-full h-full bg-white flex flex-col items-center justify-center relative overflow-hidden">
       {/* Gradient orb */}
-      <div className="relative w-40 h-40 mb-8">
+      <div className="relative w-28 h-28 mb-6">
+        {/* Outer glow */}
         <div
-          className="absolute inset-0 rounded-full blur-3xl opacity-60"
+          className="absolute inset-0 rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(236,72,153,0.8) 0%, rgba(168,85,247,0.6) 50%, rgba(59,130,246,0.4) 100%)",
+            background: "radial-gradient(circle, rgba(219,182,224,0.9) 0%, rgba(232,180,216,0.7) 40%, rgba(245,210,230,0.4) 70%, transparent 100%)",
           }}
         />
+        {/* Inner orb */}
         <div
-          className="absolute inset-4 rounded-full blur-2xl opacity-80"
+          className="absolute inset-2 rounded-full"
           style={{
-            background: "radial-gradient(circle, rgba(251,207,232,0.9) 0%, rgba(236,72,153,0.7) 50%, rgba(168,85,247,0.5) 100%)",
+            background: "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9) 0%, rgba(232,196,220,0.95) 30%, rgba(200,170,210,0.9) 60%, rgba(180,150,200,0.85) 100%)",
           }}
         />
+        {/* Highlight */}
         <div
-          className="absolute inset-8 rounded-full blur-xl"
+          className="absolute top-3 left-3 w-8 h-8 rounded-full opacity-60"
           style={{
-            background: "radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(251,207,232,0.8) 50%, rgba(236,72,153,0.6) 100%)",
+            background: "radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 70%)",
           }}
         />
       </div>
 
       {/* Text */}
-      <p className="text-white/90 text-center text-lg font-medium px-8">
-        How can I help you today?
+      <p className="text-black text-center text-base font-medium">
+        How can I help
+      </p>
+      <p className="text-black text-center text-base font-medium">
+        you today?
       </p>
     </div>
   );

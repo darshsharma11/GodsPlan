@@ -5,40 +5,70 @@ import { PhoneMockup, ChatScreen, OrbScreen } from "./phone-mockup";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-background flex items-center justify-center">
-      {/* Subtle background gradient */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 80%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.1) 30%, transparent 70%)",
-        }}
-      />
+    <section className="relative min-h-screen w-full overflow-hidden bg-white">
+      {/* Navigation */}
+      <nav className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-6">
+        <div className="flex items-center gap-6 bg-black rounded-full px-4 py-2.5">
+          <div className="w-7 h-7 bg-white rounded-full" />
+          <div className="flex items-center gap-4">
+            <span className="text-white text-sm">Components</span>
+            <span className="text-white text-sm">Snippets</span>
+            <span className="text-white text-sm">Templates</span>
+          </div>
+          <button className="text-white text-sm font-medium ml-8">
+            Try for Free
+          </button>
+        </div>
+      </nav>
 
-      {/* Phone container */}
-      <div className="relative flex items-center justify-center w-full max-w-5xl mx-auto px-4">
+      {/* Hero Content */}
+      <motion.div
+        className="absolute top-32 left-0 right-0 text-center z-40"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.8, duration: 0.6 }}
+      >
+        <div className="inline-block mb-6">
+          <span className="text-sm text-gray-600 px-4 py-2 border border-gray-200 rounded-full">
+            Join Our Waitlist and claim instant offer
+          </span>
+        </div>
+        <h1 className="text-5xl md:text-6xl font-bold text-black tracking-tight mb-4 text-balance">
+          Transform Ideas into Reality
+          <br />
+          With Vynk
+        </h1>
+        <p className="text-gray-500 text-base max-w-lg mx-auto mb-8">
+          Roll up beautiful UIs effortlessly by using Vynk CLI in minutes so that you can
+          focus on building the core of your product.
+        </p>
+        <button className="bg-black text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors">
+          Try for Free
+        </button>
+      </motion.div>
+
+      {/* Phone container - positioned at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center pb-0">
         {/* Left Phone */}
         <motion.div
           className="absolute z-10"
-          initial={{ y: "100vh", x: "-50%", scale: 0.9 }}
+          initial={{ y: "100vh" }}
           animate={{
-            y: [null, 0, 0],
-            x: ["-50%", "-50%", "-120%"],
-            scale: [0.9, 0.9, 0.85],
-            rotate: [0, 0, -5],
+            y: ["100vh", "0%", "0%", "0%"],
+            x: ["0%", "0%", "0%", "-65%"],
+            rotate: [0, 0, 0, -3],
           }}
           transition={{
-            duration: 1.2,
-            times: [0, 0.5, 1],
-            ease: [
-              [0, 0, 0.2, 1], // ease-out for entry
-              [0.34, 1.56, 0.64, 1], // spring for spread
-            ],
-            delay: 0,
+            duration: 2.4,
+            times: [0, 0.35, 0.5, 1],
+            ease: "easeOut",
           }}
-          style={{ left: "50%" }}
+          style={{ 
+            transformOrigin: "bottom center",
+            marginBottom: "-80px"
+          }}
         >
-          <PhoneMockup className="shadow-[0_25px_100px_-12px_rgba(236,72,153,0.25)]">
+          <PhoneMockup>
             <ChatScreen />
           </PhoneMockup>
         </motion.div>
@@ -46,22 +76,18 @@ export function HeroSection() {
         {/* Center Phone */}
         <motion.div
           className="relative z-20"
-          initial={{ y: "100vh", scale: 1 }}
+          initial={{ y: "100vh" }}
           animate={{
-            y: [null, 0, -20],
-            scale: [1, 1, 1],
+            y: ["100vh", "-10%", "-10%"],
           }}
           transition={{
-            duration: 1.2,
-            times: [0, 0.5, 1],
-            ease: [
-              [0, 0, 0.2, 1],
-              [0.34, 1.56, 0.64, 1],
-            ],
-            delay: 0,
+            duration: 1.8,
+            times: [0, 0.6, 1],
+            ease: "easeOut",
           }}
+          style={{ marginBottom: "-60px" }}
         >
-          <PhoneMockup className="shadow-[0_25px_100px_-12px_rgba(168,85,247,0.35)]">
+          <PhoneMockup>
             <OrbScreen />
           </PhoneMockup>
         </motion.div>
@@ -69,44 +95,27 @@ export function HeroSection() {
         {/* Right Phone */}
         <motion.div
           className="absolute z-10"
-          initial={{ y: "100vh", x: "50%", scale: 0.9 }}
+          initial={{ y: "100vh" }}
           animate={{
-            y: [null, 0, 0],
-            x: ["50%", "50%", "120%"],
-            scale: [0.9, 0.9, 0.85],
-            rotate: [0, 0, 5],
+            y: ["100vh", "0%", "0%", "0%"],
+            x: ["0%", "0%", "0%", "65%"],
+            rotate: [0, 0, 0, 3],
           }}
           transition={{
-            duration: 1.2,
-            times: [0, 0.5, 1],
-            ease: [
-              [0, 0, 0.2, 1],
-              [0.34, 1.56, 0.64, 1],
-            ],
-            delay: 0,
+            duration: 2.4,
+            times: [0, 0.35, 0.5, 1],
+            ease: "easeOut",
           }}
-          style={{ right: "50%" }}
+          style={{ 
+            transformOrigin: "bottom center",
+            marginBottom: "-80px"
+          }}
         >
-          <PhoneMockup className="shadow-[0_25px_100px_-12px_rgba(236,72,153,0.25)]">
+          <PhoneMockup>
             <ChatScreen />
           </PhoneMockup>
         </motion.div>
       </div>
-
-      {/* Optional: Title text */}
-      <motion.div
-        className="absolute top-16 left-0 right-0 text-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
-      >
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-          Chat GPT GO
-        </h1>
-        <p className="text-muted-foreground mt-3 text-lg">
-          Your AI assistant, everywhere you go
-        </p>
-      </motion.div>
     </section>
   );
 }
