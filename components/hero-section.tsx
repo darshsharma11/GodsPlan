@@ -5,11 +5,11 @@ import { PhoneMockup, ChatScreen, OrbScreen } from "./phone-mockup";
 
 export function HeroSection() {
   // Animation timeline (5 seconds total):
-  // 0.0s - 0.8s: First phone (center/orb) slides up from bottom to center
-  // 0.6s - 1.4s: Second phone (chat) slides up and stacks behind
-  // 1.2s - 2.0s: Third phone slides up and stacks behind
-  // 2.2s - 3.2s: Phones spread into fan formation (NO rotation - all straight)
-  // 3.2s - 4.0s: Phones move down slightly, text appears from top
+  // 0.0s - 0.6s: First phone (chat "Hello Saad") slides up - fully visible
+  // 0.5s - 1.1s: Second phone (chat) slides up and COVERS the first
+  // 1.0s - 1.6s: Third phone (orb) slides up and COVERS the second
+  // 2.0s - 3.0s: Phones spread into fan formation (NO rotation - all straight)
+  // 3.0s - 4.0s: Phones move down slightly, text appears from top
   // 4.0s - 5.0s: Everything settles
 
   return (
@@ -60,59 +60,59 @@ export function HeroSection() {
         className="relative w-full flex items-center justify-center mt-8"
         style={{ height: "480px" }}
       >
-        {/* Center Phone - Orb Screen (appears FIRST) */}
+        {/* FIRST Phone - Chat Screen "Hello Saad" (appears first, LOWEST z-index) */}
+        <motion.div
+          className="absolute z-10"
+          initial={{ y: 700, x: 0 }}
+          animate={{
+            y: [700, 0, 0, 0, 50, 50],
+            x: [0, 0, 0, 0, -220, -220],
+          }}
+          transition={{
+            duration: 5,
+            times: [0, 0.12, 0.32, 0.40, 0.60, 1],
+            ease: "easeInOut",
+          }}
+        >
+          <PhoneMockup>
+            <ChatScreen />
+          </PhoneMockup>
+        </motion.div>
+
+        {/* SECOND Phone - Chat Screen (slides up and COVERS first, goes RIGHT) */}
+        <motion.div
+          className="absolute z-20"
+          initial={{ y: 700, x: 0 }}
+          animate={{
+            y: [700, 700, 0, 0, 50, 50],
+            x: [0, 0, 0, 0, 220, 220],
+          }}
+          transition={{
+            duration: 5,
+            times: [0, 0.10, 0.22, 0.40, 0.60, 1],
+            ease: "easeInOut",
+          }}
+        >
+          <PhoneMockup>
+            <ChatScreen />
+          </PhoneMockup>
+        </motion.div>
+
+        {/* THIRD Phone - Orb Screen (slides up LAST and COVERS second, stays CENTER, HIGHEST z-index) */}
         <motion.div
           className="absolute z-30"
           initial={{ y: 700 }}
           animate={{
-            y: [700, 0, 0, 0, -30, -30],
+            y: [700, 700, 700, 0, -30, -30],
           }}
           transition={{
             duration: 5,
-            times: [0, 0.16, 0.40, 0.64, 0.80, 1],
+            times: [0, 0.18, 0.20, 0.32, 0.60, 1],
             ease: "easeInOut",
           }}
         >
           <PhoneMockup>
             <OrbScreen />
-          </PhoneMockup>
-        </motion.div>
-
-        {/* Second Phone - Chat Screen (stacks behind center, then goes LEFT) */}
-        <motion.div
-          className="absolute z-20"
-          initial={{ y: 700, x: 0 }}
-          animate={{
-            y: [700, 700, 30, 30, 50, 50],
-            x: [0, 0, 0, 0, -220, -220],
-          }}
-          transition={{
-            duration: 5,
-            times: [0, 0.12, 0.28, 0.44, 0.72, 1],
-            ease: "easeInOut",
-          }}
-        >
-          <PhoneMockup>
-            <ChatScreen />
-          </PhoneMockup>
-        </motion.div>
-
-        {/* Third Phone - Chat Screen (stacks behind, then goes RIGHT) */}
-        <motion.div
-          className="absolute z-10"
-          initial={{ y: 700, x: 0 }}
-          animate={{
-            y: [700, 700, 700, 60, 50, 50],
-            x: [0, 0, 0, 0, 220, 220],
-          }}
-          transition={{
-            duration: 5,
-            times: [0, 0.12, 0.24, 0.40, 0.72, 1],
-            ease: "easeInOut",
-          }}
-        >
-          <PhoneMockup>
-            <ChatScreen />
           </PhoneMockup>
         </motion.div>
       </motion.div>
