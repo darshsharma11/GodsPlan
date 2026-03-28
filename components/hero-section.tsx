@@ -5,12 +5,12 @@ import { PhoneMockup, ChatScreen, OrbScreen } from "./phone-mockup";
 
 export function HeroSection() {
   // Animation timeline (5 seconds total):
-  // 0.0s - 0.6s: First phone (center/orb) rises up
-  // 0.4s - 1.0s: Second phone rises up (stacks behind)
-  // 0.8s - 1.4s: Third phone rises up (stacks behind)
-  // 1.5s - 2.5s: Phones spread into fan formation
-  // 2.5s - 3.5s: Phones move down, text appears from top
-  // 3.5s - 5.0s: Everything settles
+  // 0.0s - 0.8s: First phone (center/orb) slides up from bottom to center
+  // 0.6s - 1.4s: Second phone (chat) slides up and stacks behind
+  // 1.2s - 2.0s: Third phone slides up and stacks behind
+  // 2.2s - 3.2s: Phones spread into fan formation (NO rotation - all straight)
+  // 3.2s - 4.0s: Phones move down slightly, text appears from top
+  // 4.0s - 5.0s: Everything settles
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-white">
@@ -34,7 +34,7 @@ export function HeroSection() {
         className="relative z-40 pt-24 text-center px-4"
         initial={{ opacity: 0, y: -60 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.8, duration: 0.8, ease: "easeOut" }}
+        transition={{ delay: 3.2, duration: 0.8, ease: "easeOut" }}
       >
         <div className="inline-block mb-6">
           <span className="text-sm text-gray-600 px-4 py-2 border border-gray-200 rounded-full">
@@ -58,42 +58,18 @@ export function HeroSection() {
       {/* Phone container */}
       <motion.div 
         className="relative w-full flex items-center justify-center mt-8"
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
         style={{ height: "480px" }}
       >
-        {/* Left Phone - Chat Screen */}
+        {/* Center Phone - Orb Screen (appears FIRST) */}
         <motion.div
-          className="absolute z-10"
-          initial={{ y: 600, x: 0, rotate: 0, scale: 0.9 }}
+          className="absolute z-30"
+          initial={{ y: 700 }}
           animate={{
-            y: [600, 0, 0, 0, 40],
-            x: [0, 0, 0, -180, -180],
-            rotate: [0, 0, 0, -5, -5],
-            scale: [0.9, 0.9, 0.9, 0.9, 0.9],
+            y: [700, 0, 0, 0, -30, -30],
           }}
           transition={{
             duration: 5,
-            times: [0, 0.16, 0.30, 0.52, 1],
-            ease: "easeInOut",
-          }}
-        >
-          <PhoneMockup>
-            <ChatScreen />
-          </PhoneMockup>
-        </motion.div>
-
-        {/* Center Phone - Orb Screen (appears first) */}
-        <motion.div
-          className="absolute z-20"
-          initial={{ y: 600, scale: 1 }}
-          animate={{
-            y: [600, -20, -20, -20, -10],
-            scale: [1, 1, 1, 1, 1],
-          }}
-          transition={{
-            duration: 5,
-            times: [0, 0.12, 0.30, 0.52, 1],
+            times: [0, 0.16, 0.40, 0.64, 0.80, 1],
             ease: "easeInOut",
           }}
         >
@@ -102,19 +78,36 @@ export function HeroSection() {
           </PhoneMockup>
         </motion.div>
 
-        {/* Right Phone - Chat Screen */}
+        {/* Second Phone - Chat Screen (stacks behind center, then goes LEFT) */}
         <motion.div
-          className="absolute z-10"
-          initial={{ y: 600, x: 0, rotate: 0, scale: 0.9 }}
+          className="absolute z-20"
+          initial={{ y: 700, x: 0 }}
           animate={{
-            y: [600, 0, 0, 0, 40],
-            x: [0, 0, 0, 180, 180],
-            rotate: [0, 0, 0, 5, 5],
-            scale: [0.9, 0.9, 0.9, 0.9, 0.9],
+            y: [700, 700, 30, 30, 50, 50],
+            x: [0, 0, 0, 0, -220, -220],
           }}
           transition={{
             duration: 5,
-            times: [0, 0.20, 0.30, 0.52, 1],
+            times: [0, 0.12, 0.28, 0.44, 0.72, 1],
+            ease: "easeInOut",
+          }}
+        >
+          <PhoneMockup>
+            <ChatScreen />
+          </PhoneMockup>
+        </motion.div>
+
+        {/* Third Phone - Chat Screen (stacks behind, then goes RIGHT) */}
+        <motion.div
+          className="absolute z-10"
+          initial={{ y: 700, x: 0 }}
+          animate={{
+            y: [700, 700, 700, 60, 50, 50],
+            x: [0, 0, 0, 0, 220, 220],
+          }}
+          transition={{
+            duration: 5,
+            times: [0, 0.12, 0.24, 0.40, 0.72, 1],
             ease: "easeInOut",
           }}
         >
