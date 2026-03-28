@@ -98,12 +98,12 @@ export function HeroSection() {
           </PhoneMockup>
         </motion.div>
 
-        {/* THIRD Phone - Orb Screen (slides up LAST, stays CENTER and elevated, IN FRONT) */}
+        {/* THIRD Phone - Orb Screen (slides up LAST, stays CENTER, IN FRONT) */}
         <motion.div
           className="absolute z-30"
           initial={{ y: 700 }}
           animate={{
-            y: [700, 700, 700, 0, -30, -30],
+            y: [700, 700, 700, 0, 20, 20],
           }}
           transition={{
             duration: 5,
