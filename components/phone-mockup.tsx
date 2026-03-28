@@ -31,21 +31,23 @@ export function PhoneMockup({ children, className }: PhoneMockupProps) {
           {/* Dynamic Island */}
           <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
           
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-1">
+            {/* Signal bars */}
             <svg className="w-3.5 h-3.5 text-black" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="4" y="6" width="3" height="12" rx="1" opacity="0.3"/>
-              <rect x="9" y="4" width="3" height="14" rx="1" opacity="0.5"/>
-              <rect x="14" y="2" width="3" height="16" rx="1" opacity="0.7"/>
-              <rect x="19" y="0" width="3" height="18" rx="1"/>
+              <rect x="4" y="12" width="3" height="6" rx="0.5"/>
+              <rect x="9" y="8" width="3" height="10" rx="0.5"/>
+              <rect x="14" y="4" width="3" height="14" rx="0.5"/>
+              <rect x="19" y="1" width="3" height="17" rx="0.5"/>
             </svg>
-            <svg className="w-3.5 h-3.5 text-black" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M14 2a8 8 0 018 8h-2a6 6 0 00-6-6V2zm0 4a4 4 0 014 4h-2a2 2 0 00-2-2V6z"/>
-              <circle cx="14" cy="10" r="2"/>
+            {/* Bluetooth icon */}
+            <svg className="w-3 h-3 text-black" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L17 7L13 11L17 15L12 20V13L8 17L6.5 15.5L11.5 10.5L6.5 5.5L8 4L12 8V2ZM13 4.83V8.17L14.88 6.29L13 4.83ZM13 12.83V16.17L14.88 14.29L13 12.83Z"/>
             </svg>
+            {/* Battery */}
             <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="currentColor">
               <rect x="2" y="7" width="18" height="10" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
-              <rect x="20" y="10" width="2" height="4" rx="1"/>
-              <rect x="4" y="9" width="8" height="6" rx="1"/>
+              <rect x="20" y="10" width="2" height="4" rx="0.5"/>
+              <rect x="4" y="9" width="10" height="6" rx="1"/>
             </svg>
           </div>
         </div>

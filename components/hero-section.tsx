@@ -60,13 +60,13 @@ export function HeroSection() {
         className="relative w-full flex items-center justify-center mt-8"
         style={{ height: "480px" }}
       >
-        {/* FIRST Phone - Chat Screen "Hello Saad" (appears first, LOWEST z-index) */}
+        {/* FIRST Phone - Chat Screen "Hello Saad" (appears first, goes LEFT) */}
         <motion.div
-          className="absolute z-10"
+          className="absolute z-20"
           initial={{ y: 700, x: 0 }}
           animate={{
-            y: [700, 0, 0, 0, 50, 50],
-            x: [0, 0, 0, 0, -220, -220],
+            y: [700, 0, 0, 0, 80, 80],
+            x: [0, 0, 0, 0, -260, -260],
           }}
           transition={{
             duration: 5,
@@ -84,8 +84,8 @@ export function HeroSection() {
           className="absolute z-20"
           initial={{ y: 700, x: 0 }}
           animate={{
-            y: [700, 700, 0, 0, 50, 50],
-            x: [0, 0, 0, 0, 220, 220],
+            y: [700, 700, 0, 0, 80, 80],
+            x: [0, 0, 0, 0, 260, 260],
           }}
           transition={{
             duration: 5,
@@ -98,12 +98,12 @@ export function HeroSection() {
           </PhoneMockup>
         </motion.div>
 
-        {/* THIRD Phone - Orb Screen (slides up LAST and COVERS second, stays CENTER, HIGHEST z-index) */}
+        {/* THIRD Phone - Orb Screen (slides up LAST and COVERS second, stays CENTER and elevated) */}
         <motion.div
           className="absolute z-30"
           initial={{ y: 700 }}
           animate={{
-            y: [700, 700, 700, 0, -30, -30],
+            y: [700, 700, 700, 0, -20, -20],
           }}
           transition={{
             duration: 5,
