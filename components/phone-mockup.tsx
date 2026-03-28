@@ -29,7 +29,7 @@ export function PhoneMockup({ children, className }: PhoneMockupProps) {
           </div>
           
           {/* Dynamic Island */}
-          <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-5 bg-black rounded-full" />
           
           <div className="flex items-center gap-1">
             {/* Signal bars */}
@@ -65,10 +65,13 @@ export function ChatScreen() {
   return (
     <div className="w-full h-full bg-white flex flex-col">
       {/* Header */}
-      <div className="px-4 py-2 flex items-center gap-2">
-        <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+      <div className="px-4 py-2 flex items-center gap-1.5">
+        <svg className="w-4 h-4 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="12" cy="12" r="9"/>
+          <ellipse cx="12" cy="12" rx="3.5" ry="9"/>
+          <path d="M3 12h18"/>
+          <path d="M4.5 7h15"/>
+          <path d="M4.5 17h15"/>
         </svg>
         <span className="text-black text-xs font-medium">Chat GPT GO</span>
       </div>
